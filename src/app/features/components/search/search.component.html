@@ -1,0 +1,27 @@
+<div>
+    <form [formGroup]="searchForm">
+        <label>Search Recipe</label>
+        <input formControlName="search" type="text">
+    </form>
+    <button (click)="searchRecipe()">Search</button>
+    <button (click)="favoriteRecipes()">Favorite recipes</button>
+</div>
+
+<mat-grid-list *ngIf="recipes" cols="6">
+    <mat-grid-tile *ngFor="let recipe of recipes.results">
+        <mat-checkbox (change)="checked($event, recipe.id)" [checked]="favoriteRecipeList[recipe.id]">Favorite</mat-checkbox>
+        <div (click)="recipeDetails(recipe.id)">
+            {{recipe.title}}
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<div
+    *ngFor="let item of names; let i = index"
+    [ngClass]="{classRed: selectedNames[i]}"
+    (click)="redact(i)"
+>
+    {{item}}
+    {{i}}
+</div>
+<button (click)="getSelected()"></button>

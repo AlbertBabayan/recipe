@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    .details {
+        width: 300px;
+        // height: 300px;
+    }
+    .ingredients-list{
+        .ingredients-list-details {
+            height: auto;
+        }
+    }
+}
