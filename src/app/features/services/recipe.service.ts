@@ -12,18 +12,17 @@ export class RecipeService {
   constructor(private http: HttpClient) { }
 
   public getRecipe(recipe?: string): Observable<IRecipe> {
-    const {serverUrl, apiKey} = environment;
-    // TODO: move apiKey query param to interceptor (serverUrl also if possible)
+    const {serverUrl} = environment;
     return this.http.get<IRecipe>(`${serverUrl}/recipes/complexSearch?query=${recipe}`);
   }
 
   public getRecipeDetails(id: number): Observable<IRecipeDetails> {
-    const {serverUrl, apiKey} = environment;
+    const {serverUrl} = environment;
     return this.http.get<IRecipeDetails>(`${serverUrl}/recipes/${id}/information`);
   }
 
   public getRecipeBulk(ids: string): Observable<IRecipeItem[]> {
-    const {serverUrl, apiKey} = environment;
+    const {serverUrl} = environment;
     return this.http.get<IRecipeItem[]>(`${serverUrl}/recipes/informationBulk?ids=${ids}`);
   }
 
